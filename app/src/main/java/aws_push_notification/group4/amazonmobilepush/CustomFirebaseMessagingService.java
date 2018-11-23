@@ -23,10 +23,10 @@ public class CustomFirebaseMessagingService extends com.google.firebase.messagin
         Log.i(TAG, "onMessageReceived::" + remoteMessage.getData().toString());
 
         Map<String, String> data = remoteMessage.getData();
-        String title = data.get("title");
-        String messagae = data.get("content");
+        String title = "AmazonMobilePush";//data.get("title");
+        String message = data.get("default");
 
-        sendNotification(title, messagae);
+        sendNotification(title, message);
     }
 
     private void sendNotification(String title, String message) {
@@ -37,7 +37,7 @@ public class CustomFirebaseMessagingService extends com.google.firebase.messagin
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_dialog_info))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(title)
                 .setContentText(message)
